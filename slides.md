@@ -3,10 +3,8 @@ title: "Stash No More"
 subtitle: "Streamlining Multi-Branch Development with Git Worktrees"
 theme: academic
 highlighter: shiki
-# https://sli.dev/features/drawing
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
 transition: slide-up
 mdc: true
 layout: cover
@@ -169,8 +167,7 @@ $ git worktree prune               # Clean up references to removed worktrees. (
 ```
 
 <br>
-<Note>Explore additional commands like locking, moving, and repairing worktrees in the docs.
-</Note>
+<Note>Explore additional commands like locking, moving, and repairing worktrees in the docs.</Note>
 
 ---
 layout: center
@@ -189,23 +186,25 @@ layout: center
 
 ---
 
-# What Makes Worktrees Superior
+# Git Worktree Advantages
+<br>
 
-- Seamless context switching.
-- Saves disk space compared to cloning.
-- Boosts productivity by simplifying branch management.
+- **Avoids Common Pain Points:** No need for stashing, premature commits, or multiple repository clones.
+- **Effortless Context Switching:** Seamlessly switch between branches without disrupting your workflow, increasing productivity.
+- **Isolated Environments:** Each worktree operates in its own separate directory, providing a clean and independent workspace.
+- **Parallel Task Management:** Run long-running tests or builds in one worktree while continuing development in another, avoiding downtime.
 
-<!-- Visual: Infographic comparing Worktrees vs. other methods. -->
 
 ---
 
-# Challenges to Consider
+# Git Worktree Caveats
+<br>
 
-- Increased complexity for new users.
-- Disk space usage for large projects.
-- Setup overhead for projects with complex environments.
-
-<!-- Visual: A balance scale showing pros vs. cons. -->
+- **Worktree-Branch Exclusivity:** A branch can only be checked out in one worktree at a time, as changes in one would desynchronize the other.
+- **Untracked files are not copied:** When you create a new worktree, it is created from whatever is comitted, so gitignored or uncomitted files are not copied.
+- **Setup Overhead:** For projects with expensive setup scripts, creating new Worktrees can slow down workflows and disrupt efficiency.
+- **Learning Curve:** May feel complex for beginners or those new to Git Worktrees.
+- **Disk Usage:** Can consume significant space for larger projects creating many Worktrees.
 
 ---
 
@@ -214,24 +213,27 @@ layout: center
 
 **Best Practices:**
 
-- **Organized Directory Structure:** Keep all worktrees in a central folder or have clear rules where to put them.
-- **Consistent Naming:** Name directories based on branch purpose (e.g., `feature-branch`, `bugfix`).
-- **Regular Maintenance:** Prune unused worktrees to avoid clutter.
+- **Organized Directory Structure:** Keep all Worktrees in a central folder or have clear rules where to put them.
+- **Consistent Naming:** Name directories based on branch purpose (e.g., `feature`, `bugfix`).
+- **Regular Maintenance:** Prune/Remove unused Worktrees to avoid clutter.
 
 
 ---
 
-# Why Worktrees?
+# Takeaways
+<br>
 
-- A powerful solution for multi-branch challenges.
-- Enables efficient and structured workflows.
-- Perfect for frequent branch switchers (ditch `git stash` and premature commits).
+- **Streamlined Workflows Save Time Daily:** Investing in tools like Git Worktrees simplifies multi-branch development and eliminates repetitive tasks.
+- **Perfect for Frequent Branch Switchers:** Ideal for devs frequently switching between branches for tasks like bug fixes, code reviews, or release preparations.
+- **Efficient Multi-Branching:** Worktrees enable seamless parallel work on multiple branches, improving productivity and reducing context-switching mental load.
+- **Shared Git Metadata:** Worktrees share a single `.git` directory, ensuring synchronized updates across branches.
+
 
 ---
 layout: center
 ---
 
-# Personal Workflow Demo
+# Workflow Demo
 
 <!-- 
 # Real-Life Example: My Setup
@@ -241,30 +243,21 @@ layout: center
   - `feature`: Development branch.
   - `stale`: Temporary work.
 - **TMUX** for easy terminal multiplexing.
-
 -->
 
-<!-- Visual: Screenshot of TMUX with multiple worktrees open. -->
-
 ---
 
-# Learn More and Experiment
+# Thank You!
+<br>
 
-**Additional Resources:**
+**Explore More:**
 
 - [Git Worktree Documentation](https://git-scm.com/docs/git-worktree)
+- [Git Kraken Worktree Guide](https://www.gitkraken.com/learn/git/git-worktree)
+- [Worktrees: Git's best kept secret (and why you should use them)](https://www.tomups.com/posts/git-worktrees/)
 
-**Call to Action:**
+**Slides:**
 
-- Try Git Worktrees in your next project.
-- Explore ways to tailor Worktrees to your workflow.
-
-
----
-
-# Let's Discuss
-
-- Open the floor for audience questions.
-- Invite feedback and suggestions for using Git Worktrees.
+- <https://worktree.gorecki.cc/>
 
 ---
