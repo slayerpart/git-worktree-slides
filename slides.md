@@ -261,4 +261,8 @@ layout: center
 
 - <https://worktree.gorecki.cc/>
 
----
+<QRCode
+  value="https://worktree.gorecki.cc/"
+  :width="140"
+  :height="140"
+/>

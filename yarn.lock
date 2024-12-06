@@ -636,6 +636,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@katzumi/slidev-addon-qrcode@^0.0.17":
+  version "0.0.17"
+  resolved "https://npm.mountaininfra.net/@katzumi/slidev-addon-qrcode/-/slidev-addon-qrcode-0.0.17.tgz#612eac80f1617483d791912b1c2c8dd9cd2947c6"
+  integrity sha512-H2XFqwMJyafqA4B9VZsqx7jpuoTfu6Mo6X/r8Okk1H+OMZcIt0iTsWdQaGhRsuaRQPtv+zmQtiY1V3WLlcd7Ug==
+  dependencies:
+    styled-qr-code "^1.0.0"
+
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz#4fc56c15c580b9adb7dc3c333a134e540b44bfb1"
@@ -4628,6 +4635,11 @@ punycode.js@^2.3.1:
   resolved "https://registry.yarnpkg.com/punycode.js/-/punycode.js-2.3.1.tgz#6b53e56ad75588234e79f4affa90972c7dd8cdb7"
   integrity sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==
 
+qrcode-generator@^1.4.4:
+  version "1.4.4"
+  resolved "https://npm.mountaininfra.net/qrcode-generator/-/qrcode-generator-1.4.4.tgz#63f771224854759329a99048806a53ed278740e7"
+  integrity sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw==
+
 queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
@@ -4991,6 +5003,13 @@ style-value-types@5.1.2, style-value-types@^5.1.2:
   dependencies:
     hey-listen "^1.0.8"
     tslib "2.4.0"
+
+styled-qr-code@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.mountaininfra.net/styled-qr-code/-/styled-qr-code-1.0.0.tgz#6d2651dfb6141ef1f15ad3e8226aacb02fc124dd"
+  integrity sha512-Tye/Omr8VYUUUCiBE+GNMeJ1Tt0cIsDkLXnQGG6/Xxegyd1021wQKFAFvx/hjaTUrfwpmukWTZfXs3uc/XXN0g==
+  dependencies:
+    qrcode-generator "^1.4.4"
 
 stylis@^4.3.1:
   version "4.3.4"

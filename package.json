@@ -8,6 +8,7 @@
     "export": "slidev export"
   },
   "dependencies": {
+    "@katzumi/slidev-addon-qrcode": "^0.0.17",
     "@slidev/cli": "^0.50.0-beta.10",
     "@slidev/theme-default": "latest",
     "slidev-theme-academic": "^2.0.1",
@@ -15,5 +16,10 @@
   },
   "devDependencies": {
     "@iconify-json/logos": "^1.2.3"
+  },
+  "slidev": {
+    "addons": [
+      "@katzumi/slidev-addon-qrcode"
+    ]
   }
 }
