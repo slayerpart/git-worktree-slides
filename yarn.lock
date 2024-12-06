@@ -565,6 +565,13 @@
   dependencies:
     "@iconify/types" "*"
 
+"@iconify-json/logos@^1.2.3":
+  version "1.2.3"
+  resolved "https://npm.mountaininfra.net/@iconify-json/logos/-/logos-1.2.3.tgz#a2832f4150769d48d2569aaabd05edd4e9e9f932"
+  integrity sha512-JLHS5hgZP1b55EONAWNeqBUuriRfRNKWXK4cqYx0PpVaJfIIMiiMxFfvoQiX/bkE9XgkLhcKmDUqL3LXPdXPwQ==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/ph@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@iconify-json/ph/-/ph-1.2.1.tgz#c011a457a9a8eac05926a940661e07f92f000433"

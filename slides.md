@@ -10,7 +10,7 @@ mdc: true
 layout: cover
 ---
 
-# Stash No More
+# <logos-git-icon /> Stash No More
 
 Streamlining Multi-Branch Development with Git Worktrees
 
