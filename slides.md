@@ -12,7 +12,7 @@ layout: cover
 
 # <logos-git-icon /> Stash No More
 
-Streamlining Multi-Branch Development with Git Worktrees
+Streamlining Multi-Branch Development with **Git Worktrees**
 
 ```sh
 $ git stash clear
@@ -25,13 +25,15 @@ layout: default
 # Agenda
 <br>
 
-- Identify challenges in multi-branch development workflows.
-- Discuss pros and cons of existing solutions.
-- Understand Git Worktrees to create your own efficient workflows.
+- Challenges in Multi-Branch Development
+- Existing Solutions: Pros and Cons
+- Introduction to Git Worktrees
+- Workflows, Commands, and Best Practices
+- Workflow Demo
 
 ---
 
-# Multi-Branch Development Pain
+# Multi-Branch Development Pain Points
 <br>
 
 **Daily tasks require branch switching:**
@@ -41,7 +43,7 @@ layout: default
 - Code reviews
 - Release preparations
 
-**Problem:** Context switching isn't seamless due to uncommitted changes.
+**Problem:** Context switching isn't seamless due to **uncommitted changes**.
 
 
 ---
@@ -151,7 +153,7 @@ $ git worktree list                # View all existing worktrees and their detai
 
 ```sh
 $ git worktree add [path] [branch] # Create a new worktree with a specified branch.
-$ git worktree add -b [new-branch] [path] [branch] # Create a new worktree called [new-branch] based on [branch].
+$ git worktree add  [path] [branch] # Create a new worktree called [new-branch] based on [branch].
 ```
 
 - Remove existing Worktree
@@ -213,9 +215,9 @@ layout: center
 
 **Best Practices:**
 
-- **Organized Directory Structure:** Keep all Worktrees in a central folder or have clear rules where to put them.
-- **Consistent Naming:** Name directories based on branch purpose (e.g., `feature`, `bugfix`).
-- **Regular Maintenance:** Prune/Remove unused Worktrees to avoid clutter.
+- **Organize Worktrees in a Central Location:** Keep all Worktrees in a central folder or have clear rules where to put them.
+- **Name Worktrees Based on Purpose:** Name directories based on branch purpose (e.g., `feature`, `bugfix`).
+- **Prune Regularly to Prevent Clutter:** Prune/Remove unused Worktrees to avoid clutter.
 
 
 ---
@@ -227,7 +229,6 @@ layout: center
 - **Perfect for Frequent Branch Switchers:** Ideal for devs frequently switching between branches for tasks like bug fixes, code reviews, or release preparations.
 - **Efficient Multi-Branching:** Worktrees enable seamless parallel work on multiple branches, improving productivity and reducing context-switching mental load.
 - **Shared Git Metadata:** Worktrees share a single `.git` directory, ensuring synchronized updates across branches.
-
 
 ---
 layout: center
