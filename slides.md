@@ -42,15 +42,23 @@ layout: default
 - Bug fixes
 - Code reviews
 - Release preparations
+- ...
 
 **Problem:** Managing uncommitted changes during frequent switches **disrupts workflow**.
+
+<v-click>
+```sh
+error: Your local changes to the following files would be overwritten by checkout
+  - ...
+```
+</v-click>
 
 
 ---
 transition: view-transition
 ---
 
-# Existing Solutions: Pros and Cons
+# Common Solutions: Pros and Cons
 <br>
 
 **Git Stash**
@@ -70,7 +78,7 @@ $ git stash apply   # Reapply a stash
 transition: view-transition
 ---
 
-# Existing Solutions: Pros and Cons
+# Common Solutions: Pros and Cons
 <br>
 
 **Premature Commits**
@@ -87,7 +95,7 @@ $ git commit -m "WIP"   # Commit as work-in-progress
 
 ---
 
-# Existing Solutions: Pros and Cons
+# Common Solutions: Pros and Cons
 <br>
 
 **Multiple Repository Clones**
@@ -160,27 +168,38 @@ transition: view-transition
 
 - Add new Worktree
 
+````md magic-move
 ```sh
 $ git worktree add (-b [new-branch]) [path] [branch] # Create a new Worktree with a specified branch.
-
+```
+```sh
+$ git worktree add -b featureA ~/.worktrees/repo.feature main
+```
+```sh
 $ git worktree add -b featureA ~/.worktrees/repo.feature main
 Preparing worktree (new branch 'featureA')
 branch 'featureA' set up to track 'main'.
 HEAD is now at dc8f89d Update lockfile
 ```
+````
 
 <br>
 
-- List Worktrees
+<v-click>
 
+- List Worktrees
+````md magic-move
 ```sh
 $ git worktree list                # View all existing Worktrees and their details.
-
+```
+```sh
+$ git worktree list                # View all existing Worktrees and their details.
 /Users/User/Code/repo                dc8f89d [main]
 /Users/User/.worktrees/repo.feature  dc8f89d [featureA]
-
 ```
+````
 
+</v-click>
 
 
 ---
@@ -190,25 +209,80 @@ $ git worktree list                # View all existing Worktrees and their detai
 
 - Remove existing Worktree
 
+````md magic-move
 ```sh
 $ git worktree remove [path]       # Safely delete an existing Worktree.
-
+```
+```sh
+$ git worktree remove ~/.worktrees/repo.feature
+```
+```sh
+$ git worktree remove ~/.worktrees/repo.feature
+$ git worktree list
+```
+```sh
 $ git worktree remove ~/.worktrees/repo.feature
 $ git worktree list
 /Users/User/Code/repo                dc8f89d [main]
 ```
+````
 
 <br>
+
+<v-click>
 
 - Prune Worktrees
 
+````md magic-move
 ```sh
 $ git worktree prune               # Clean up references to deleted working directories.
 ```
+```sh
+$ rm -rf ~/.worktrees/repo.feature
+```
+```sh
+$ rm -rf ~/.worktrees/repo.feature
+$ git worktree list
+```
+```sh
+$ rm -rf ~/.worktrees/repo.feature
+$ git worktree list
+/Users/User/Code/repo                dc8f89d [main]
+/Users/User/.worktrees/repo.feature  dc8f89d [featureA] prunable
+```
+```sh
+$ rm -rf ~/.worktrees/repo.feature
+$ git worktree list
+/Users/User/Code/repo                dc8f89d [main]
+/Users/User/.worktrees/repo.feature  dc8f89d [featureA] prunable
+$ git worktree prune
+```
+```sh
+$ rm -rf ~/.worktrees/repo.feature
+$ git worktree list
+/Users/User/Code/repo                dc8f89d [main]
+/Users/User/.worktrees/repo.feature  dc8f89d [featureA] prunable
+$ git worktree prune
+$ git worktree list
+```
+```sh
+$ rm -rf ~/.worktrees/repo.feature
+$ git worktree list
+/Users/User/Code/repo                dc8f89d [main]
+/Users/User/.worktrees/repo.feature  dc8f89d [featureA] prunable
+$ git worktree prune
+$ git worktree list
+/Users/User/Code/repo                dc8f89d [main]
+```
+````
+
+</v-click>
 
 <br>
-<Note>Explore additional commands like locking, moving, and repairing Worktrees in the docs.</Note>
 
+<v-click>
+<Note>Explore additional commands like locking, moving, and repairing Worktrees in the docs.</Note>
+</v-click>
 ---
 layout: center
 ---
