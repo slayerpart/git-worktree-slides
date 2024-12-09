@@ -26,10 +26,10 @@ layout: default
 <br>
 
 - Challenges in Multi-Branch Development
-- Existing Solutions: Pros and Cons
+- Common Solutions: Pros and Cons
+- Anatomy of a Git Repository
 - Introduction to Git Worktrees
-- Workflows, Commands, and Best Practices
-- Workflow Demo
+- Demo
 
 ---
 
@@ -38,25 +38,25 @@ layout: default
 
 **Daily tasks require branch switching:**
 
-- Tackling multiple tasks in parallel
+- Parallel feature development
 - Bug fixes
 - Code reviews
 - Release preparations
 
-**Problem:** Context switching isn't seamless due to **uncommitted changes**.
+**Problem:** Managing uncommitted changes during frequent switches **disrupts workflow**.
 
 
 ---
 transition: view-transition
 ---
 
-# Branch Switching Solutions
+# Existing Solutions: Pros and Cons
 <br>
 
 **Git Stash**
 
-- **Advantages:** Easy to use; avoids unnecessary commits.
-- **Drawbacks:** Requires remembering stashes; risk of losing or mismanaging them.
+- **Pros:** straight-forward, avoids unnecessary commits.
+- **Cons:** Requires remembering stashes; risk of losing or mismanaging them.
 
 <br>
 
@@ -70,13 +70,13 @@ $ git stash apply   # Reapply a stash
 transition: view-transition
 ---
 
-# Branch Switching Solutions
+# Existing Solutions: Pros and Cons
 <br>
 
 **Premature Commits**
 
-- **Advantages:** Prevents stash-related issues.
-- **Drawbacks:** Pollutes commit history; creates confusion during reviews. Introduces mental load coming up with meaningful commit messages.
+- **Pros:** Prevents stash-related issues.
+- **Cons:** Pollutes history, complicates reviews, and adds mental load for brainstorming meaningful commit messages.
 
 <br>
 
@@ -85,17 +85,15 @@ $ git add --all         # Stage all changes
 $ git commit -m "WIP"   # Commit as work-in-progress
 ```
 
-
-
 ---
 
-# Branch Switching Solutions
+# Existing Solutions: Pros and Cons
 <br>
 
 **Multiple Repository Clones**
 
-- **Advantages:** Eliminates stash/commit drawbacks.
-- **Drawbacks:** Disk-heavy, manual syncing each repository is time-consuming.
+- **Pros:** Eliminates stash/commit drawbacks.
+- **Cons:** Disk-heavy; manual git metadata syncing is tedious.
 
 <br>
 
@@ -109,6 +107,24 @@ $ git clone git@github.com:user/repo.git repo2   # Clone into second directory
 ```
 
 ---
+
+# Anatomy of a Git Repository
+<br>
+
+The `.git` folder is the heart of a Git repository, storing essential metadata and configurations.
+
+**Overview:**
+
+- `HEAD`: Tracks the currently checked-out branch.
+- `objects/`: Stores all commits, trees, and blobs (Git’s content database).
+- `refs/`: Contains branch and tag references.
+- `index`: Staging area for files to be committed.
+- `worktrees/`: Stores all Worktree-related information
+
+<br>
+<Note>Next to the .git folder, you’ll find the contents of the main Worktree.</Note>
+
+---
 transition: view-transition
 ---
 
@@ -117,13 +133,9 @@ transition: view-transition
 
 **Definition:**
 
-A **Git Worktree** is an independent working directory associated with a Git repository, allowing you to check out a specific branch or commit in a separate directory without affecting the state of other worktrees.
+A **Git Worktree** is an **independent working directory** linked to a Git repository, allowing you to check out a specific branch or commit in a separate directory without affecting the state of other Worktrees.
 
-Each worktree shares the same `.git` repository metadata but operates as its *own isolated environment*, enabling efficient multi-branch development.
-
-<br>
-
-<Note>You’re already using a worktree—the main one by default!</Note>
+Each Worktree shares the same `.git` folder but operates as its *own isolated environment*, enabling efficient multi-branch development.
 
 ---
 
@@ -132,44 +144,70 @@ Each worktree shares the same `.git` repository metadata but operates as its *ow
 
 **Characteristics:**
 
-- **Shared Repository:** All worktrees share a single `.git` directory, minimizing disk usage.
-- **Unified Management:** Fetching git refs in one worktree are reflected across all.
-- **Independent Environments:** Each worktree has its own working directory and index.
-- **Branch Isolation:** Each worktree operates on its own branch or commit, independent of others.
-- **Parallel Development:** Enables simultaneous work on multiple branches without switching.
+- **Shared Repository:** All Worktrees share a single `.git` directory, minimizing disk usage.
+- **Independent Environments:** Each Worktree has its own working directory and index, operating on their own branch or commit.
+- **Parallel Development:** Enables parallel work on multiple branches without switching.
+
+<br>
+<Note>When you clone or initialize a Git repository, a main worktree is automatically created. Using the worktree API, you can add additional linked worktrees to the repository.</Note>
 
 ---
+transition: view-transition
+---
 
-# Git Worktree Commands
+# Git Worktree Commands (1/2)
+<br>
+
+- Add new Worktree
+
+```sh
+$ git worktree add (-b [new-branch]) [path] [branch] # Create a new Worktree with a specified branch.
+
+$ git worktree add -b featureA ~/.worktrees/repo.feature main
+Preparing worktree (new branch 'featureA')
+branch 'featureA' set up to track 'main'.
+HEAD is now at dc8f89d Update lockfile
+```
+
 <br>
 
 - List Worktrees
 
 ```sh
-$ git worktree list                # View all existing worktrees and their details.
+$ git worktree list                # View all existing Worktrees and their details.
+
+/Users/User/Code/repo                dc8f89d [main]
+/Users/User/.worktrees/repo.feature  dc8f89d [featureA]
+
 ```
 
-- Add new Worktree
 
-```sh
-$ git worktree add [path] [branch] # Create a new worktree with a specified branch.
-$ git worktree add  [path] [branch] # Create a new worktree called [new-branch] based on [branch].
-```
+
+---
+
+# Git Worktree Commands (2/2)
+<br>
 
 - Remove existing Worktree
 
 ```sh
-$ git worktree remove [path]       # Safely delete an existing worktree.
+$ git worktree remove [path]       # Safely delete an existing Worktree.
+
+$ git worktree remove ~/.worktrees/repo.feature
+$ git worktree list
+/Users/User/Code/repo                dc8f89d [main]
 ```
+
+<br>
 
 - Prune Worktrees
 
 ```sh
-$ git worktree prune               # Clean up references to removed worktrees. (deleted working directories)
+$ git worktree prune               # Clean up references to deleted working directories.
 ```
 
 <br>
-<Note>Explore additional commands like locking, moving, and repairing worktrees in the docs.</Note>
+<Note>Explore additional commands like locking, moving, and repairing Worktrees in the docs.</Note>
 
 ---
 layout: center
@@ -193,8 +231,8 @@ layout: center
 
 - **Avoids Common Pain Points:** No need for stashing, premature commits, or multiple repository clones.
 - **Effortless Context Switching:** Seamlessly switch between branches without disrupting your workflow, increasing productivity.
-- **Isolated Environments:** Each worktree operates in its own separate directory, providing a clean and independent workspace.
-- **Parallel Task Management:** Run long-running tests or builds in one worktree while continuing development in another, avoiding downtime.
+- **Isolated Environments:** Each Worktree operates in its own separate working directory, providing an independent workspace.
+- **Parallel Task Management:** Run long-running tasks like tests or builds in one Worktree while continuing development in another, avoiding downtime.
 
 
 ---
@@ -202,27 +240,24 @@ layout: center
 # Git Worktree Caveats
 <br>
 
-- **Worktree-Branch Exclusivity:** A branch can only be checked out in one worktree at a time, as changes in one would desynchronize the other.
-- **Untracked files are not copied:** When you create a new worktree, it is created from whatever is comitted, so gitignored or uncomitted files are not copied.
+- **Branch Exclusivity:** A branch can only be checked out in one Worktree at a time, as changes in one would desynchronize the other.
+- **Untracked Files Not Copied:**  Only committed files are included in new Worktrees.
 - **Setup Overhead:** For projects with expensive setup scripts, creating new Worktrees can slow down workflows and disrupt efficiency.
 - **Learning Curve:** May feel complex for beginners or those new to Git Worktrees.
-- **Disk Usage:** Can consume significant space for larger projects creating many Worktrees.
+- **Disk Usage:** Disk impact with many Worktrees on large projects.
 
 ---
 
-# Gotta rule them all!
+# Git Worktree Best Practices
 <br>
 
-**Best Practices:**
-
 - **Organize Worktrees in a Central Location:** Keep all Worktrees in a central folder or have clear rules where to put them.
-- **Name Worktrees Based on Purpose:** Name directories based on branch purpose (e.g., `feature`, `bugfix`).
-- **Prune Regularly to Prevent Clutter:** Prune/Remove unused Worktrees to avoid clutter.
-
+- **Purposeful Naming:** Name directories based on branch purpose (e.g., `feature`, `bugfix`).
+- **Prune Regularly:** Prune/Remove unused Worktrees to avoid clutter.
 
 ---
 
-# Takeaways
+# Recap
 <br>
 
 - **Streamlined Workflows Save Time Daily:** Investing in tools like Git Worktrees simplifies multi-branch development and eliminates repetitive tasks.
@@ -255,14 +290,11 @@ layout: center
 
 - [Git Worktree Documentation](https://git-scm.com/docs/git-worktree)
 - [Git Kraken Worktree Guide](https://www.gitkraken.com/learn/git/git-worktree)
-- [Worktrees: Git's best kept secret (and why you should use them)](https://www.tomups.com/posts/git-worktrees/)
 
-**Slides:**
+<br>
 
-- <https://worktree.gorecki.cc/>
+**Slides:** <https://worktree.gorecki.cc/>
 
-<QRCode
-  value="https://worktree.gorecki.cc/"
-  :width="140"
-  :height="140"
-/>
+<br>
+
+**Questions?**
