@@ -53,6 +53,12 @@ error: Your local changes to the following files would be overwritten by checkou
 ```
 </v-click>
 
+---
+layout: center
+---
+
+#### **How do you manage uncommitted changes when switching branches?**
+
 
 ---
 transition: view-transition
