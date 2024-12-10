@@ -331,7 +331,7 @@ layout: center
 # Git Worktree Best Practices
 <br>
 
-- **Organize Worktrees in a Central Location:** Keep all Worktrees in a central folder or have clear rules where to put them.
+- **Organize Worktrees:** Keep all Worktrees in a central folder or have clear rules where to put them.
 - **Purposeful Naming:** Name directories based on branch purpose (e.g., `feature`, `bugfix`).
 - **Prune Regularly:** Prune/Remove unused Worktrees to avoid clutter.
 
