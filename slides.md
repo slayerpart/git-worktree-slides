@@ -336,16 +336,6 @@ layout: center
 - **Prune Regularly:** Prune/Remove unused Worktrees to avoid clutter.
 
 ---
-
-# Recap
-<br>
-
-- **Streamlined Workflows Save Time Daily:** Investing in tools like Git Worktrees simplifies multi-branch development and eliminates repetitive tasks.
-- **Perfect for Frequent Branch Switchers:** Ideal for devs frequently switching between branches for tasks like bug fixes, code reviews, or release preparations.
-- **Efficient Multi-Branching:** Worktrees enable seamless parallel work on multiple branches, improving productivity and reducing context-switching mental load.
-- **Shared Git Metadata:** Worktrees share a single `.git` directory, ensuring synchronized updates across branches.
-
----
 layout: center
 ---
 
@@ -363,6 +353,16 @@ layout: center
 
 ---
 
+# Recap
+<br>
+
+- **Streamlined Workflows Save Time Daily:** Investing in tools like Git Worktrees simplifies multi-branch development and eliminates repetitive tasks.
+- **Perfect for Frequent Branch Switchers:** Ideal for devs frequently switching between branches for tasks like bug fixes, code reviews, or release preparations.
+- **Efficient Multi-Branching:** Worktrees enable seamless parallel work on multiple branches, improving productivity and reducing context-switching mental load.
+- **Shared Git Metadata:** Worktrees share a single `.git` directory, ensuring synchronized updates across branches.
+
+---
+
 # Thank You!
 <br>
 
@@ -370,7 +370,7 @@ layout: center
 
 - [Git Worktree Documentation](https://git-scm.com/docs/git-worktree)
 - [Git Kraken Worktree Guide](https://www.gitkraken.com/learn/git/git-worktree)
-
+- [Git Worktree Cheat Sheet](https://gitlab.com/-/snippets/3631442)
 <br>
 
 **Slides:** <https://worktree.gorecki.cc/>
